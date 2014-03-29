@@ -16,7 +16,7 @@ public class LineList {
 			current = addLine;
 		}
 		else {
-
+			//Finish
 		}
 	}
 
@@ -28,6 +28,9 @@ public class LineList {
 			current.getNext().setPrev(addLine);
 			current.setNext(addLine);
 			current = addLine;
+		}
+		else {
+			// Finish
 		}
 	}
 
