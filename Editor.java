@@ -2,8 +2,7 @@ public class Editor implements IEditor {
 
 	public void process command(String command) {
 		String[] token = command.split(" ");
-		String cmd = token[0].trim();
-		switch (cmd.toLowerCase) {
+		switch (token[0].trim().toLowerCase()) {
 			case "b":	break;
 			case "i":	break;
 			case "m":	break;
