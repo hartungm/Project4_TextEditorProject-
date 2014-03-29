@@ -1,9 +1,24 @@
 public class LineList {
 	private Line head, current;
 
-	public LineList() {}
+	public LineList() {
+		head = null;
+		current = null;
+	}
 
+	public void insertBefore(String newLine) {
+		Line addLine = new Line(newLine);
+		current.getPrev().setNext(addLine);
+		current.setPrev(addLine);
+		current = addLine;
+	}
 
+	public void insertAfter(String newLine) {
+		Line addLine = new Line(newLine);
+		current.getNext().setPrev(addLine);
+		current.setNext(addLine);
+		current = addLine;
+	}
 
 	public void down() {
 		current = current.getNext();
@@ -33,5 +48,18 @@ public class LineList {
 		else {
 			System.out.println("Nothing to remove!");
 		}
+	}
+
+	public String toString() {
+		String result = "";
+		pass = head
+		lineNumber = 1;
+		while(pass != null) {
+			result += lineNumber + ": "
+			result += pass.toString();
+			pass = pass.getNext();
+			lineNumber++;
+		}
+		return result;
 	}
 }
