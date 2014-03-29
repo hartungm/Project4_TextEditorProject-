@@ -26,11 +26,11 @@ public class CmdProcess {
 	}
 
 	public void displayFile() {
-
+		process.toString();
 	}
 
 	public void clearFile() {
-
+		tedList = new LineList();
 	}
 
 	public void saveFile(String fileName) {
