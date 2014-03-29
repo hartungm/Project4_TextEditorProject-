@@ -15,15 +15,15 @@ public class CmdProcess {
 	}
 
 	public void downOnePos(int currentIndex) {
-
+		tedList.down();
 	}
 
 	public void upOnePos(int currentIndex) {
-
+		tedList.up();
 	}
 
 	public void removeCurrentLine(int currentIndex) {
-
+		tedList.remove();
 	}
 
 	public void displayFile() {
