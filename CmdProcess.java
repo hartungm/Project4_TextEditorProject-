@@ -1,28 +1,27 @@
 public class CmdProcess {
 	private LineList tedList;
-	private int currentLine;
 
 	public CmdProcess() {
 		tedList = new LineList();
 	}
 
-	public void insertBefore(String newLine, int currentIndex) {
-
+	public void insertBefore(String newLine) {
+		process.insertBefore(newLine);
 	}
 
-	public void insertAfter(String newLine, int currentIndex) {
-
+	public void insertAfter(String newLine) {
+		process.insertAfter(newLine);
 	}
 
-	public void downOnePos(int currentIndex) {
+	public void downOnePos() {
 		tedList.down();
 	}
 
-	public void upOnePos(int currentIndex) {
+	public void upOnePos() {
 		tedList.up();
 	}
 
-	public void removeCurrentLine(int currentIndex) {
+	public void removeCurrentLine() {
 		tedList.remove();
 	}
 
