@@ -8,16 +8,27 @@ public class LineList {
 
 	public void insertBefore(String newLine) {
 		Line addLine = new Line(newLine);
-		current.getPrev().setNext(addLine);
-		current.setPrev(addLine);
-		current = addLine;
+		if(current.getPrev() != null) {
+			addLine.setNext(current);
+			addLine.setPrev(current.getPrev);
+			current.getPrev().setNext(addLine);
+			current.setPrev(addLine);
+			current = addLine;
+		}
+		else {
+
+		}
 	}
 
 	public void insertAfter(String newLine) {
 		Line addLine = new Line(newLine);
-		current.getNext().setPrev(addLine);
-		current.setNext(addLine);
-		current = addLine;
+		if(current.getNext() != null) {
+			addLine.setNext(current.getNext());
+			addLine.setPrev(current);
+			current.getNext().setPrev(addLine);
+			current.setNext(addLine);
+			current = addLine;
+		}
 	}
 
 	public void down() {
