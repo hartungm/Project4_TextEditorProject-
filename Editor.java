@@ -11,15 +11,15 @@ public class Editor implements IEditor {
 		String[] token = command.split(" ");
 		switch (token[0].trim().toLowerCase()) {
 			
-			case "b":	process.insertBefore(command.subString(2), getCurrentLine());
+			case "b":	process.insertBefore(command.subString(2));
 						break;
-			case "i":	process.insertAfter(command.subString(2), getCurrentLine());
+			case "i":	process.insertAfter(command.subString(2));
 						break;
-			case "m":	process.downOnePos(getCurrentLine());
+			case "m":	process.downOnePos();
 						break;
-			case "u":	process.upOnePos(getCurrentLine());
+			case "u":	process.upOnePos();
 						break;
-			case "r":	process.removeCurrentLine(getCurrentLine());
+			case "r":	process.removeCurrentLine();
 						break;
 			case "d":	process.displayFile();
 						break;
