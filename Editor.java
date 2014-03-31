@@ -37,6 +37,8 @@ public class Editor implements IEditor {
 						break;
 			case "pas": process.pasteClipboard();
 						break;
+			default:	System.out.println("Invalid Command!")
+						break;
 		}
 	}
 
