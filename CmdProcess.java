@@ -6,11 +6,11 @@ public class CmdProcess {
 	}
 
 	public void insertBefore(String newLine) {
-		process.insertBefore(newLine);
+		tedList.insertBefore(newLine);
 	}
 
 	public void insertAfter(String newLine) {
-		process.insertAfter(newLine);
+		tedList.insertAfter(newLine);
 	}
 
 	public void downOnePos() {
@@ -26,7 +26,7 @@ public class CmdProcess {
 	}
 
 	public void displayFile() {
-		process.toString();
+		tedList.toString();
 	}
 
 	public void clearFile() {

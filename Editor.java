@@ -7,13 +7,13 @@ public class Editor implements IEditor {
 		tedList = new LineList();
 	}
 
-	public void process command(String command) {
+	public void processCommand(String command) {
 		String[] token = command.split(" ");
 		switch (token[0].trim().toLowerCase()) {
 			
-			case "b":	process.insertBefore(command.subString(2));
+			case "b":	process.insertBefore(command.substring(2));
 						break;
-			case "i":	process.insertAfter(command.subString(2));
+			case "i":	process.insertAfter(command.substring(2));
 						break;
 			case "m":	process.downOnePos();
 						break;
@@ -37,7 +37,7 @@ public class Editor implements IEditor {
 						break;
 			case "pas": process.pasteClipboard();
 						break;
-			default:	System.out.println("Invalid Command!")
+			default:	System.out.println("Invalid Command!");
 						break;
 		}
 	}

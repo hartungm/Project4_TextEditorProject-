@@ -10,7 +10,7 @@ public class LineList {
 		Line addLine = new Line(newLine);
 		if(current.getPrev() != null) {
 			addLine.setNext(current);
-			addLine.setPrev(current.getPrev);
+			addLine.setPrev(current.getPrev());
 			current.getPrev().setNext(addLine);
 			current.setPrev(addLine);
 			current = addLine;
@@ -55,7 +55,7 @@ public class LineList {
 				current = current.getNext();	
 			}
 		}
-		else if(current.getPrev != null) {
+		else if(current.getPrev() != null) {
 			current.getPrev().setNext(null);
 			current = current.getPrev();
 		}
@@ -66,10 +66,10 @@ public class LineList {
 
 	public String toString() {
 		String result = "";
-		pass = head
-		lineNumber = 1;
+		Line pass = head;
+		int lineNumber = 1;
 		while(pass != null) {
-			result += lineNumber + ": "
+			result += lineNumber + ": ";
 			result += pass.toString();
 			pass = pass.getNext();
 			lineNumber++;
