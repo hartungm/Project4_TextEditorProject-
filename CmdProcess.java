@@ -1,3 +1,8 @@
+import java.io.*;
+import java.util.Scanner;
+
+import project1.CountDownTimer;
+
 public class CmdProcess {
 	private LineList tedList;
 
@@ -30,7 +35,8 @@ public class CmdProcess {
 	}
 
 	public void displayFile() {
-		tedList.toString();
+		System.out.println(tedList.toString());
+		// Double check this to match intent
 	}
 
 	public void clearFile() {
@@ -38,11 +44,24 @@ public class CmdProcess {
 	}
 
 	public void saveFile(String fileName) {
-
+		PrintWriter p = null;
+		try {
+			p=new PrintWriter(new BufferedWriter(new FileWriter(fileName)));
+		} catch (IOException e) {
+			System.out.println("Error while writing file!");
+		}
+		p.println(tedList.toString());
+		p.close();
 	}
 
 	public void loadFile(String fileName) {
-
+		try {
+			Scanner fileReader = new Scanner (new File(fileName));
+			//needs to be finished
+			fileReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found");
+		}
 	}
 
 	public void showHelp() {
