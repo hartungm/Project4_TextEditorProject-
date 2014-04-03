@@ -1,10 +1,8 @@
 public class Editor implements IEditor {
 	private CmdProcess process;
-	private LineList tedList;
 
 	public Editor() {
 		process = new CmdProcess();
-		tedList = new LineList();
 	}
 
 	public void processCommand(String command) {
@@ -43,10 +41,13 @@ public class Editor implements IEditor {
 	}
 
 	public String getLine(int lineNbr) {
-
+		Line l = process.getList().getHead();
+		for (int i=1; i<=lineNbr; i++)
+			l = l.getNext();
+		return l.toString();
 	}
 
 	public String getCurrentLine() {
-
+		return process.getList().getCurrent().toString();
 	}
 }

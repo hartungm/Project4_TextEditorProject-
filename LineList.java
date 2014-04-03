@@ -63,6 +63,14 @@ public class LineList {
 			System.out.println("Nothing to remove!");
 		}
 	}
+	
+	public Line getCurrent () {
+		return current;
+	}
+	
+	public Line getHead () {
+		return head;
+	}
 
 	public String toString() {
 		String result = "";

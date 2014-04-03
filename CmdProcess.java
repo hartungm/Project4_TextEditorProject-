@@ -4,6 +4,10 @@ public class CmdProcess {
 	public CmdProcess() {
 		tedList = new LineList();
 	}
+	
+	public LineList getList () {
+		return tedList;
+	}
 
 	public void insertBefore(String newLine) {
 		tedList.insertBefore(newLine);
