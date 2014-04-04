@@ -18,6 +18,7 @@ public class LineList {
 		else {
 			//Finish
 		}
+		
 	}
 
 	public void insertAfter(String newLine) {
@@ -32,6 +33,7 @@ public class LineList {
 		else {
 			// Finish
 		}
+		// If Current == null?
 	}
 
 	public void down() {
