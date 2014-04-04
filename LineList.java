@@ -8,7 +8,10 @@ public class LineList {
 
 	public void insertBefore(String newLine) {
 		Line addLine = new Line(newLine);
-		if(current.getPrev() != null) {
+		if (current == null) {
+			current = head = addLine;
+		}
+		else if (current.getPrev() != null) {
 			addLine.setNext(current);
 			addLine.setPrev(current.getPrev());
 			current.getPrev().setNext(addLine);
@@ -16,14 +19,19 @@ public class LineList {
 			current = addLine;
 		}
 		else {
-			//Finish
+			addLine.setNext(head);
+			head.setPrev(addLine);
+			current = head = addLine;
 		}
 		
 	}
 
 	public void insertAfter(String newLine) {
 		Line addLine = new Line(newLine);
-		if(current.getNext() != null) {
+		if (current == null) {
+			current = head = addLine;
+		}
+		else if (current.getNext() != null) {
 			addLine.setNext(current.getNext());
 			addLine.setPrev(current);
 			current.getNext().setPrev(addLine);
@@ -31,9 +39,10 @@ public class LineList {
 			current = addLine;
 		}
 		else {
-			// Finish
+			addLine.setPrev(current);
+			current.setNext(addLine);
+			current = addLine;
 		}
-		// If Current == null?
 	}
 
 	public void down() {
