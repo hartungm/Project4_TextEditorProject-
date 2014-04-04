@@ -58,16 +58,13 @@ public class CmdProcess {
 
 	public void loadFile(String fileName) {
 		try {
-			Scanner fileReader = new Scanner (new File(fileName));
+			Scanner sc = new Scanner (new File(fileName));
 			clearFile();
-			tedList.insertAfter(fileReader.next());
-			tedList.down();
-			while (fileReader.hasNext()) {
-				tedList.insertAfter(fileReader.next());
-				tedList.down();
+			while (sc.hasNextLine()) {
+				tedList.insertAfter(sc.nextLine());
 			}
-			//needs to be checked
-			fileReader.close();
+			tedList.setCurrent(tedList.getHead());
+			sc.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
 		}

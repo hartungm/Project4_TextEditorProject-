@@ -66,6 +66,10 @@ public class LineList {
 		}
 	}
 	
+	public void setCurrent (Line l) {
+		current = l;
+	}
+	
 	public Line getCurrent () {
 		return current;
 	}
