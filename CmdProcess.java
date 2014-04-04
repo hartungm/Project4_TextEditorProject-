@@ -1,8 +1,6 @@
 import java.io.*;
 import java.util.Scanner;
 
-import project1.CountDownTimer;
-
 public class CmdProcess {
 	private LineList tedList;
 
@@ -57,7 +55,14 @@ public class CmdProcess {
 	public void loadFile(String fileName) {
 		try {
 			Scanner fileReader = new Scanner (new File(fileName));
-			//needs to be finished
+			clearFile();
+			tedList.insertAfter(fileReader.next());
+			tedList.down();
+			while (fileReader.hasNext()) {
+				tedList.insertAfter(fileReader.next());
+				tedList.down();
+			}
+			//needs to be checked
 			fileReader.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
@@ -69,7 +74,7 @@ public class CmdProcess {
 	}
 
 	public void exitEditor() {
-
+		System.exit(1);
 	}
 
 	public void cutSelection() {
