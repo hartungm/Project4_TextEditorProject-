@@ -92,6 +92,9 @@ public class LineList {
 		Line pass = head;
 		int lineNumber = 1;
 		while(pass != null) {
+			if(pass == current) {
+				result += "--> ";
+			}
 			result += lineNumber + ": ";
 			result += pass.toString();
 			pass = pass.getNext();
