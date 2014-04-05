@@ -13,6 +13,9 @@ public class Editor implements IEditor {
 			case "b":	process.insertBefore(command.substring(2));
 						break;
 			
+			case "e":	process.insertLast(command.substring(2));
+						break;
+
 			case "i":	process.insertAfter(command.substring(2));
 						break;
 			

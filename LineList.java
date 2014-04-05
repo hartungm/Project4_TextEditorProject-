@@ -26,6 +26,13 @@ public class LineList {
 		
 	}
 
+	public void insertLast(String newLine) {
+		while(current.getNext() != null) {
+			down();
+		}
+		insertAfter(newLine);
+	}
+
 	public void insertAfter(String newLine) {
 		Line addLine = new Line(newLine);
 		if (current == null) {
