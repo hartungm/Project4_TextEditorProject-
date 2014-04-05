@@ -46,11 +46,21 @@ public class LineList {
 	}
 
 	public void down() {
-		current = current.getNext();
+		if(current.getNext() != null) {
+			current = current.getNext();
+		}
+		else {
+			System.out.println("Bottom Line Reached!");
+		}
 	}
 
 	public void up() {
-		current = current.getPrev();
+		if(current.getPrev() != null) {
+			current = current.getPrev();
+		}
+		else {
+			System.out.println("Top Line Reached!");
+		}
 	}
 
 	public void remove() {
