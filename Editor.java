@@ -56,19 +56,43 @@ public class Editor implements IEditor {
 						}
 						break;
 			
-			case "c":	process.clearFile();
+			case "c":	if (process.isSaved()) 
+							process.clearFile();
+						else {
+							System.out.print("File not saved! ");
+							System.out.println("Save (s) or force-clear (!c)");
+						}
+						break;
+						
+			case "!c":	process.clearFile();
 						break;
 			
 			case "s":	process.saveFile(token[1].trim());
 						break;
 			
-			case "l":	process.loadFile(token[1].trim());
+			case "l":	if (process.isSaved())
+							process.loadFile(token[1].trim());
+						else {
+							System.out.print("File not saved! ");
+							System.out.println("Save (s) or force-load (!l)");
+						}
+						break;
+						
+			case "!l":	process.loadFile(token[1].trim());
 						break;
 			
 			case "h":	process.showHelp();
 						break;
 			
-			case "x":	active = false;
+			case "x":	if (process.isSaved())
+							active = false;
+						else {
+							System.out.print("File not saved! ");
+							System.out.println("Save (s) or force-quit (!x)");
+						}
+						break;
+						
+			case "!x":	active = false;
 						break;
 			
 			case "cut": process.cutSelection();

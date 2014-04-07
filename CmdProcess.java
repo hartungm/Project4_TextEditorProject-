@@ -3,9 +3,15 @@ import java.util.Scanner;
 
 public class CmdProcess {
 	private LineList tedList;
+	private boolean saved;
 
 	public CmdProcess() {
 		tedList = new LineList();
+		saved = false;
+	}
+	
+	public boolean isSaved() {
+		return saved;
 	}
 	
 	public LineList getList () {
@@ -14,14 +20,17 @@ public class CmdProcess {
 
 	public void insertBefore(String newLine) {
 		tedList.insertBefore(newLine);
+		saved = false;
 	}
 
 	public void insertAfter(String newLine) {
 		tedList.insertAfter(newLine);
+		saved = false;
 	}
 
 	public void insertLast(String newLine) {
 		tedList.insertLast(newLine);
+		saved = false;
 	}
 
 	public void down(int numDown) {
@@ -47,6 +56,7 @@ public class CmdProcess {
 
 	public void removeCurrentLine() {
 		tedList.remove();
+		saved = false;
 	}
 
 	public void displayFile() {
@@ -64,6 +74,7 @@ public class CmdProcess {
 
 	public void clearFile() {
 		tedList = new LineList();
+		saved = false;
 	}
 
 	public void saveFile(String fileName) {
@@ -75,6 +86,7 @@ public class CmdProcess {
 				p.print(tmp);
 				tmp=tmp.getNext();
 			}
+			saved = true;
 			p.close();
 		} catch (IOException e) {
 			System.out.println("Error while writing file!");
@@ -89,10 +101,12 @@ public class CmdProcess {
 				tedList.insertAfter(sc.nextLine());
 			}
 			tedList.setCurrent(tedList.getHead());
+			saved = true;
 			sc.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
 		}
+		saved = false;
 	}
 
 	public void showHelp() {
@@ -130,5 +144,6 @@ public class CmdProcess {
 
 	public void pasteClipboard() {
 
+		saved = false;
 	}
 }
