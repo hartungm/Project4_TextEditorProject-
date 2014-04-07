@@ -71,7 +71,10 @@ public class LineList {
 	}
 
 	public void remove() {
-		if(current.getNext() != null) {
+		if (current == null) {
+			System.out.println("Nothing to remove!");
+		}
+		else if(current.getNext() != null) {
 			if(current.getPrev() != null) {
 				current.getPrev().setNext(current.getNext());
 				current.getNext().setPrev(current.getPrev());
@@ -88,7 +91,7 @@ public class LineList {
 			current = current.getPrev();
 		}
 		else {
-			System.out.println("Nothing to remove!");
+			head = current = null;
 		}
 	}
 	

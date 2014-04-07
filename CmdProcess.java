@@ -98,13 +98,13 @@ public class CmdProcess {
 		out += (" line, make inserted line current\n");
 		out += ("e 'sentence' Insert sentence after last line, make inserted line current\n");
 		out += ("m            Move cursor down 1 position\n");
-	  //out += ("m #          Move cursor down # positions\n");
+		out += ("m #          Move cursor down # positions\n");
 		out += ("u            Move cursor up 1 position\n");
-	  //out += ("u #		  Move cursor down # positions\n");
+		out += ("u #		  Move cursor down # positions\n");
 		out += ("r            Remove current line. Next line becomes ");
-		out += ("current, unless\n 	     no next line, then previous becomes ");
+		out += ("current, unless no next line, then previous becomes ");
 		out += ("current\n");
-	  //out += ("r #          Remove # lines, starting at current\n")
+		out += ("r #          Remove # lines, starting at current\n");
 		out += ("d            Display all lines with line numbers\n");
 	  //out += ("d # *        Display lines # to * with line numbers\n");
 		out += ("c            Clear all lines in the file\n");
