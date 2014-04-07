@@ -51,7 +51,15 @@ public class CmdProcess {
 
 	public void displayFile() {
 		System.out.println(tedList.toString());
-		// Double check this to match intent
+	}
+	
+	public void display (int x, int y) {
+		if (x<1 || y<x) {
+			System.out.println("Invalid Command!");
+		}
+		else {
+			System.out.println(tedList.display(x,y));
+		}
 	}
 
 	public void clearFile() {
@@ -106,7 +114,7 @@ public class CmdProcess {
 		out += ("current\n");
 		out += ("r #          Remove # lines, starting at current\n");
 		out += ("d            Display all lines with line numbers\n");
-	  //out += ("d # *        Display lines # to * with line numbers\n");
+		out += ("d # *        Display lines # to * with line numbers\n");
 		out += ("c            Clear all lines in the file\n");
 		out += ("s 'filename' Save contents to specified text file\n");
 		out += ("l 'filename' Load contents of file into current buffer\n");

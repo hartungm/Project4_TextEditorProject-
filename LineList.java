@@ -106,6 +106,39 @@ public class LineList {
 	public Line getHead () {
 		return head;
 	}
+	
+	public String display (int x, int y) {
+		String result = "";
+		Line pass = head;
+		int lineNumber = 1;
+		boolean done = false;
+		while (pass != null && !done) {
+			if (lineNumber == x) {
+				while (pass != null && !done) {
+					if (pass == current) {
+						result += "--> ";
+					}
+					else {
+						result += "    ";
+					}
+					result += lineNumber + ": ";
+					result += pass.toString();
+					pass = pass.getNext();
+					lineNumber++;
+					if (lineNumber == y+1) {
+						done = true;
+					}
+				}
+			}
+			lineNumber++;
+			try {
+				pass = pass.getNext();
+			} catch (NullPointerException e) {
+				done = true;
+			}
+		}
+		return result;
+	}
 
 	public String toString() {
 		String result = "";
@@ -114,6 +147,9 @@ public class LineList {
 		while(pass != null) {
 			if(pass == current) {
 				result += "--> ";
+			}
+			else {
+				result += "    ";
 			}
 			result += lineNumber + ": ";
 			result += pass.toString();

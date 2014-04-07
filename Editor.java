@@ -47,7 +47,13 @@ public class Editor implements IEditor {
 						}
 						break;
 			
-			case "d":	process.displayFile();
+			case "d":	if (token.length == 3) {
+							int x = Integer.parseInt(token[1].trim());
+							int y = Integer.parseInt(token[2].trim());
+							process.display(x, y);
+						} else if (token.length == 1) {
+							process.displayFile();
+						}
 						break;
 			
 			case "c":	process.clearFile();
