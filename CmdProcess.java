@@ -64,7 +64,7 @@ public class CmdProcess {
 			p=new PrintWriter(new BufferedWriter(new FileWriter(fileName)));
 			Line tmp = tedList.getHead();
 			while (tmp!=null){
-				p.println(tmp);
+				p.print(tmp);
 				tmp=tmp.getNext();
 			}
 			p.close();
@@ -96,7 +96,7 @@ public class CmdProcess {
 		out += (" line, make inserted line current\n");
 		out += ("i 'sentence' Insert sentence after current");
 		out += (" line, make inserted line current\n");
-		out += ("e 'sentence' Insert sentence after last line, make inserted line current");
+		out += ("e 'sentence' Insert sentence after last line, make inserted line current\n");
 		out += ("m            Move cursor down 1 position\n");
 	  //out += ("m #          Move cursor down # positions\n");
 		out += ("u            Move cursor up 1 position\n");
