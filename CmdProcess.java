@@ -130,10 +130,13 @@ public class CmdProcess {
 		out += ("d            Display all lines with line numbers\n");
 		out += ("d # *        Display lines # to * with line numbers\n");
 		out += ("c            Clear all lines in the file\n");
+		out += ("!c			  Force clear all lines in the file\n");
 		out += ("s 'filename' Save contents to specified text file\n");
 		out += ("l 'filename' Load contents of file into current buffer\n");
+		out += ("!l 'filename'Force load contents of file into current buffer\n");
 		out += ("h            Display this help page\n");
-		out += ("x            Exit the editor");
+		out += ("x            Exit the editor\n");
+		out += ("!x			  Force exit the editor");
 		//extra functionality: only if saved to l, c, x
 		System.out.println(out);
 	}
