@@ -1,11 +1,25 @@
+/************************************************************************
+ * Class for overall Editor object in Ted Editor; processes user input
+ * @author Michael Hartung, Matthew Armand
+ */
 public class Editor implements IEditor {
+	
+	//Process and "running" boolean instance variables
 	private CmdProcess process;
-	private boolean active = true;		//End the program by setting this boolean to false, use while loop to keep program running in a main method
+	private boolean active = true;
+	//End the program by setting this boolean to false,
+	//use while loop to keep program running in a main method
 
+	/********************************************************************
+	 * Constructs new Editor object, instantiates command processing
+	 */
 	public Editor() {
 		process = new CmdProcess();
 	}
 
+	/********************************************************************
+	 * Switch statement to process user input commands
+	 */
 	public void processCommand(String command) {
 		String[] token = command.split(" ");
 		switch (token[0].trim().toLowerCase()) {
@@ -106,6 +120,11 @@ public class Editor implements IEditor {
 		}
 	}
 
+	/********************************************************************
+	 * Gets line of lineNumber matching the input parameter
+	 * @param lineNbr number of line to be fetched
+	 * @return line matching input line number
+	 */
 	public String getLine(int lineNbr) {
 		Line l = process.getList().getHead();
 		for (int i=1; i<=lineNbr; i++)
@@ -113,10 +132,18 @@ public class Editor implements IEditor {
 		return l.toString();
 	}
 
+	/********************************************************************
+	 * Gets line currently labeled as current
+	 * @return current Line object
+	 */
 	public String getCurrentLine() {
 		return process.getList().getCurrent().toString();
 	}
 
+	/********************************************************************
+	 * Gets running status of program
+	 * @return true if still running, false if program has been exited
+	 */
 	public boolean getActive() {
 		return active;
 	}

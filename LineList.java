@@ -1,11 +1,23 @@
+/************************************************************************
+ * Class for LineList, providing overall list of Linked List structure
+ * @author Michael Hartung, Matthew Armand
+ */
 public class LineList {
+	//Current and head object references for line objects
 	private Line head, current;
 
+	/********************************************************************
+	 * Constructs a new, empty LineList object
+	 */
 	public LineList() {
 		head = null;
 		current = null;
 	}
 
+	/********************************************************************
+	 * Inserts a new line before the current line
+	 * @param newLine content to be set as the text of new line
+	 */
 	public void insertBefore(String newLine) {
 		Line addLine = new Line(newLine);
 		if (current == null) {
@@ -23,9 +35,12 @@ public class LineList {
 			head.setPrev(addLine);
 			current = head = addLine;
 		}
-		
 	}
 
+	/********************************************************************
+	 * Inserts a new line at the end of the list
+	 * @param newLine content to be set as the text of new line
+	 */
 	public void insertLast(String newLine) {
 		while(current.getNext() != null) {
 			down();
@@ -33,6 +48,10 @@ public class LineList {
 		insertAfter(newLine);
 	}
 
+	/********************************************************************
+	 * Inserts a new line after the current line
+	 * @param newLine content to be set as the text of new line
+	 */
 	public void insertAfter(String newLine) {
 		Line addLine = new Line(newLine);
 		if (current == null) {
@@ -52,6 +71,9 @@ public class LineList {
 		}
 	}
 
+	/********************************************************************
+	 * Moves current line indicator down one position
+	 */
 	public void down() {
 		if(current.getNext() != null) {
 			current = current.getNext();
@@ -61,6 +83,9 @@ public class LineList {
 		}
 	}
 
+	/********************************************************************
+	 * Moves current line indicator up one position
+	 */
 	public void up() {
 		if(current.getPrev() != null) {
 			current = current.getPrev();
@@ -70,6 +95,9 @@ public class LineList {
 		}
 	}
 
+	/********************************************************************
+	 * Removes current line from the list
+	 */
 	public void remove() {
 		if (current == null) {
 			System.out.println("Nothing to remove!");
@@ -95,18 +123,36 @@ public class LineList {
 		}
 	}
 	
+	/********************************************************************
+	 * Sets the input line as the current line indicator in the list
+	 * @param l Line to be set as current
+	 */
 	public void setCurrent (Line l) {
 		current = l;
 	}
 	
+	/********************************************************************
+	 * Gets the line currently set as current within the list
+	 * @return current Line in list
+	 */
 	public Line getCurrent () {
 		return current;
 	}
 	
+	/********************************************************************
+	 * Gets the line at the head of the list
+	 * @return object reference to head of the list
+	 */
 	public Line getHead () {
 		return head;
 	}
 	
+	/********************************************************************
+	 * Displays certain lines from x to y in the list
+	 * @param x starting point to display
+	 * @param y ending point to display
+	 * @return string representation of desired lines in list
+	 */
 	public String display (int x, int y) {
 		String result = "";
 		Line pass = head;
@@ -140,6 +186,9 @@ public class LineList {
 		return result;
 	}
 
+	/********************************************************************
+	 * Returns a string representation of the list object
+	 */
 	public String toString() {
 		String result = "";
 		Line pass = head;

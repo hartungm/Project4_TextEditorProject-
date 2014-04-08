@@ -1,7 +1,13 @@
 import java.util.Scanner;
-
+/************************************************************************
+ * Main class to run Ted Editor
+ * @author Michael Hartung
+ */
 public class EditorMain {
-	
+	/********************************************************************
+	 * Runs Ted Editor program
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		String text = "";
 		Editor ted = new Editor();

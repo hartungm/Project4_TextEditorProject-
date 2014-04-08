@@ -1,38 +1,69 @@
 import java.io.*;
 import java.util.Scanner;
-
+/************************************************************************
+ * CmdProcess: class for processing commands from text editor
+ * @author Michael Hartung, Matthew Armand
+ */
 public class CmdProcess {
+	//LineList of input lines, boolean saved instance variables
 	private LineList tedList;
 	private boolean saved;
-
+	
+	/********************************************************************
+	 * Standard constructor, instantiates new process object
+	 */
 	public CmdProcess() {
 		tedList = new LineList();
 		saved = false;
 	}
 	
+	/********************************************************************
+	 * Checks whether the file has been saved since last alteration
+	 * @return true if unchanged since last saved, false if altered
+	 */
 	public boolean isSaved() {
 		return saved;
 	}
 	
+	/********************************************************************
+	 * Gets linelist object within Process class
+	 * @return LineList object (tedList)
+	 */
 	public LineList getList () {
 		return tedList;
 	}
-
+	
+	/********************************************************************
+	 * Inserts a new line before the current line in the list
+	 * @param newLine String of text to comprise new line
+	 */
 	public void insertBefore(String newLine) {
 		tedList.insertBefore(newLine);
 		saved = false;
 	}
 
+	/********************************************************************
+	 * Inserts a new line after the current line in the list
+	 * @param newLine String of text to comprise new line
+	 */
 	public void insertAfter(String newLine) {
 		tedList.insertAfter(newLine);
 		saved = false;
 	}
 
+	/********************************************************************
+	 * Inserts a new line at the end of the file
+	 * @param newLine String of text to comprise new line
+	 */
 	public void insertLast(String newLine) {
 		tedList.insertLast(newLine);
 		saved = false;
 	}
 
+	/********************************************************************
+	 * Moves current line indicator down a certain number of positions
+	 * @param numDown Number of lines to move down
+	 */
 	public void down(int numDown) {
 		while(numDown > 0) {
 			downOnePos();
@@ -40,29 +71,51 @@ public class CmdProcess {
 		}
 	}
 
+	/********************************************************************
+	 * Moves the current line indicator down one position
+	 */
 	public void downOnePos() {
 		tedList.down();
 	}
 
+	/********************************************************************
+	 * Moves the current line indicator up a certain number of positions
+	 * @param numUp Number of lines to move up
+	 */
 	public void up(int numUp) {
 		while(numUp > 0) {
 			upOnePos();
 			numUp--;
 		}
 	}
+	
+	/********************************************************************
+	 * Moves the current line indicator up one position
+	 */
 	public void upOnePos() {
 		tedList.up();
 	}
 
+	/********************************************************************
+	 * Removes the current line from the list
+	 */
 	public void removeCurrentLine() {
 		tedList.remove();
 		saved = false;
 	}
 
+	/********************************************************************
+	 * Displays all the lines in the list in formatted order
+	 */
 	public void displayFile() {
 		System.out.println(tedList.toString());
 	}
 	
+	/********************************************************************
+	 * Displays lines x to y in the list in formatted order
+	 * @param x starting line to display
+	 * @param y ending line to display
+	 */
 	public void display (int x, int y) {
 		if (x<1 || y<x) {
 			System.out.println("Invalid Command!");
@@ -72,11 +125,18 @@ public class CmdProcess {
 		}
 	}
 
+	/********************************************************************
+	 * Clears file and removes all existing lines
+	 */
 	public void clearFile() {
 		tedList = new LineList();
 		saved = false;
 	}
 
+	/********************************************************************
+	 * Saves contents of file to a file in directory structure
+	 * @param fileName Name of the file to be saved
+	 */
 	public void saveFile(String fileName) {
 		PrintWriter p = null;
 		try {
@@ -93,6 +153,10 @@ public class CmdProcess {
 		}
 	}
 
+	/********************************************************************
+	 * Loads contents of the file into current buffer
+	 * @param fileName Name of the file to be loaded
+	 */
 	public void loadFile(String fileName) {
 		try {
 			Scanner sc = new Scanner (new File(fileName));
@@ -109,6 +173,9 @@ public class CmdProcess {
 		saved = false;
 	}
 
+	/********************************************************************
+	 * Displays the help dialog with list of commands and functions
+	 */
 	public void showHelp() {
 		//non-implemented functionality included, commented out
 		String out = "";
@@ -140,11 +207,17 @@ public class CmdProcess {
 		System.out.println(out);
 	}
 
+	/********************************************************************
+	 * Cuts selection onto a clipboard to be pasted
+	 */
 	public void cutSelection() {
 
 		saved = false;
 	}
 
+	/********************************************************************
+	 * Pastes selection from clipboard into the file
+	 */
 	public void pasteClipboard() {
 
 		saved = false;
