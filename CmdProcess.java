@@ -142,6 +142,7 @@ public class CmdProcess {
 
 	public void cutSelection() {
 
+		saved = false;
 	}
 
 	public void pasteClipboard() {
