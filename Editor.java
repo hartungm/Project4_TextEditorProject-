@@ -22,6 +22,7 @@ public class Editor implements IEditor {
 	 */
 	public void processCommand(String command) {
 		String[] token = command.split(" ");
+		try {
 		switch (token[0].trim().toLowerCase()) {
 			
 			case "b":	process.insertBefore(command.substring(2));
@@ -117,6 +118,11 @@ public class Editor implements IEditor {
 			
 			default:	System.out.println("Invalid Command!");
 						break;
+		}
+		} catch(NumberFormatException e) {
+			System.out.println("Invalid Command! Numeric parameters only");
+		} catch (IndexOutOfBoundsException f) {
+			System.out.println("Invalid Command! Enter a string to use");
 		}
 	}
 
