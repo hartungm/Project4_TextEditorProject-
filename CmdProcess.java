@@ -196,6 +196,8 @@ public class CmdProcess {
 		out += ("r #           Remove # lines, starting at current\n");
 		out += ("d             Display all lines with line numbers\n");
 		out += ("d # *         Display lines # to * with line numbers\n");
+		out += ("cut # $ *     Cut lines # to $ to clipboard *\n");
+		out += ("pas *         Paste clipboard * before current position\n");
 		out += ("c             Clear all lines in the file\n");
 		out += ("!c            Force clear all lines in the file\n");
 		out += ("s 'filename'  Save contents to specified text file\n");
