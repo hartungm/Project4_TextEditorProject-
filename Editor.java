@@ -110,10 +110,12 @@ public class Editor implements IEditor {
 			case "!x":	active = false;
 						break;
 			
-			case "cut": process.cutSelection();
+			case "cut": process.cutSelection(Integer.parseInt(token[1].trim()), 
+											 Integer.parseInt(token[2].trim()), 
+											 Integer.parseInt(token[3].trim()));
 						break;
 			
-			case "pas": process.pasteClipboard();
+			case "pas": process.pasteClipboard(Integer.parseInt(token[1].trim()));
 						break;
 			
 			default:	System.out.println("Invalid Command!");

@@ -6,6 +6,7 @@ public class LineList {
 	//Current and head object references for line objects
 	private Line head, current;
 	private LineList next, prev;
+	private int clipNum;
 	/********************************************************************
 	 * Constructs a new, empty LineList object
 	 */
@@ -224,5 +225,13 @@ public class LineList {
 
 	public LineList getNext() {
 		return next;
+	}
+
+	public int getClipNum() {
+		return clipNum;
+	}
+
+	public void setClipNum(int pClipNum) {
+		clipNum = pClipNum;
 	}
 }

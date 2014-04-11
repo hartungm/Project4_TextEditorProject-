@@ -8,12 +8,14 @@ public class CmdProcess {
 	//LineList of input lines, boolean saved instance variables
 	private LineList tedList;
 	private boolean saved;
+	private CutPaste clipboard;
 	
 	/********************************************************************
 	 * Standard constructor, instantiates new process object
 	 */
 	public CmdProcess() {
 		tedList = new LineList();
+		clipboard = new CutPaste();
 		saved = false;
 	}
 	
@@ -104,6 +106,14 @@ public class CmdProcess {
 		saved = false;
 	}
 
+	/********************************************************************
+	 * Removes a number of Lines from the list
+	 */
+	public void remove(int numLines) {
+		for(i = 0; i < numLines; i++) {
+			removeCurrentLine();
+		}
+	}
 	/********************************************************************
 	 * Displays all the lines in the list in formatted order
 	 */
@@ -212,16 +222,45 @@ public class CmdProcess {
 	/********************************************************************
 	 * Cuts selection onto a clipboard to be pasted
 	 */
-	public void cutSelection() {
-
+	public void cutSelection(int startLine, int endLine, int clipboardNum) {
+		LineList temp = new LineList();
+		tedList.setCurrent(tedList.getHead());
+		try {
+			// Finding Starting Position
+			for(int i = 0; i < startLine; i++) {
+				if(tedList.getCurrent().getNext() != null) {
+					current = tedList.getCurrent().getNext();
+				}
+				else {
+					throw new InvalidStartError();
+				}
+			}
+			// After Start has been found, copy lines into temp line list and remove lines
+			for(int i = startLine; i < endLine; i++) {
+				if(tedList.getCurrent().getNext() != null) {
+					temp.insertAfter(tedList.getCurrent);
+					removeCurrentLine();
+				}
+				else {
+					throw new InvalidEndError();
+				}
+			}
+		}
+		catch (InvalidStartError e) {
+			System.out.println("Invalid Starting Point!");
+		}
+		catch (InvalidEndError e) {
+			System.out.println("Invalid Ending Point!");
+		}
+		clipboard.add(temp, clipboardNum);
 		saved = false;
 	}
 
 	/********************************************************************
 	 * Pastes selection from clipboard into the file
 	 */
-	public void pasteClipboard() {
-
+	public void pasteClipboard(int clipboardNum) {
+		tedList.insertBefore(clipboard.getBoard(clipboardNum));
 		saved = false;
 	}
 }
