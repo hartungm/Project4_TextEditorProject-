@@ -5,13 +5,15 @@
 public class LineList {
 	//Current and head object references for line objects
 	private Line head, current;
-
+	private LineList next, prev;
 	/********************************************************************
 	 * Constructs a new, empty LineList object
 	 */
 	public LineList() {
 		head = null;
 		current = null;
+		next = null;
+		prev = null;
 	}
 
 	/********************************************************************
@@ -206,5 +208,21 @@ public class LineList {
 			lineNumber++;
 		}
 		return result;
+	}
+
+	public void setPrev(LineList pPrev) {
+		prev = pPrev;
+	}
+
+	public void setNext(LineList pNext) {
+		next = pNext;
+	}
+
+	public LineList getPrev() {
+		return prev;
+	}
+
+	public LineList getNext() {
+		return next;
 	}
 }
