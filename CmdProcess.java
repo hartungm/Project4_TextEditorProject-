@@ -110,7 +110,7 @@ public class CmdProcess {
 	 * Removes a number of Lines from the list
 	 */
 	public void remove(int numLines) {
-		for(i = 0; i < numLines; i++) {
+		for(int i = 0; i < numLines; i++) {
 			removeCurrentLine();
 		}
 	}
@@ -225,34 +225,33 @@ public class CmdProcess {
 	public void cutSelection(int startLine, int endLine, int clipboardNum) {
 		LineList temp = new LineList();
 		tedList.setCurrent(tedList.getHead());
-		try {
 			// Finding Starting Position
 			for(int i = 0; i < startLine; i++) {
 				if(tedList.getCurrent().getNext() != null) {
-					current = tedList.getCurrent().getNext();
+					tedList.setCurrent(tedList.getCurrent().getNext());
 				}
 				else {
-					throw new InvalidStartError();
+					System.out.println("Invalid Starting Point!");
+					i = endLine;
 				}
 			}
 			// After Start has been found, copy lines into temp line list and remove lines
 			for(int i = startLine; i < endLine; i++) {
 				if(tedList.getCurrent().getNext() != null) {
-					temp.insertAfter(tedList.getCurrent);
+					temp.insertAfter(tedList.getCurrent());
 					removeCurrentLine();
 				}
 				else {
-					throw new InvalidEndError();
+					System.out.println("Invalid Ending Point!");
+					i = endLine;
 				}
 			}
+		if(temp.getHead() != null) {
+			clipboard.add(temp, clipboardNum);
 		}
-		catch (InvalidStartError e) {
-			System.out.println("Invalid Starting Point!");
+		else {
+			System.out.println("Cut failed!");
 		}
-		catch (InvalidEndError e) {
-			System.out.println("Invalid Ending Point!");
-		}
-		clipboard.add(temp, clipboardNum);
 		saved = false;
 	}
 

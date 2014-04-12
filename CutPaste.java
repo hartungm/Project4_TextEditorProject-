@@ -92,7 +92,7 @@ public class CutPaste {
 		LineList retrieve = null;		
 		while(current != null && retrieve == null) {
 			if(current.getClipNum() == clipBoardNum) {
-				LineList retrieve = current;
+				retrieve = current;
 				removeCurrent();
 			}
 			else {
