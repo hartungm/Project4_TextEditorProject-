@@ -118,9 +118,11 @@ public class Editor implements IEditor {
 						break;
 		}
 		} catch(NumberFormatException e) {
-			System.out.println("Invalid Command! Numeric parameters only");
+			System.out.println("Invalid Command! Numeric parameters only.");
 		} catch (IndexOutOfBoundsException f) {
-			System.out.println("Invalid Command! Enter a string to use");
+			System.out.println("Invalid Command! Enter a string to use.");
+		} catch (NullPointerException n) {
+			System.out.println("Object Not Found! Please create things before attmpting to use them.");
 		}
 	}
 
