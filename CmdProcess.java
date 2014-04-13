@@ -226,7 +226,7 @@ public class CmdProcess {
 		LineList temp = new LineList();
 		tedList.setCurrent(tedList.getHead());
 			// Finding Starting Position
-			for(int i = 0; i < startLine; i++) {
+			for(int i = 1; i < startLine; i++) {
 				if(tedList.getCurrent().getNext() != null) {
 					tedList.setCurrent(tedList.getCurrent().getNext());
 				}
@@ -236,7 +236,7 @@ public class CmdProcess {
 				}
 			}
 			// After Start has been found, copy lines into temp line list and remove lines
-			for(int i = startLine; i < endLine; i++) {
+			for(int i = startLine; i <= endLine; i++) {
 				if(tedList.getCurrent().getNext() != null) {
 					temp.insertAfter(tedList.getCurrent().toString());
 					removeCurrentLine();
