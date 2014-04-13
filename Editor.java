@@ -95,15 +95,17 @@ public class Editor implements IEditor {
 			case "h":	process.showHelp();
 						break;
 			
-			case "x":	if (process.isSaved())
+			case "x":	if (process.isSaved()) {
+							System.out.println("Closing Ted Editor. Goodbye!");
 							active = false;
-						else {
+						} else {
 							System.out.print("File not saved! ");
 							System.out.println("Save (s) or force-quit (!x)");
 						}
 						break;
 						
-			case "!x":	active = false;
+			case "!x":	System.out.println("Closing Ted Editor. Goodbye!");
+						active = false;
 						break;
 			
 			case "cut": process.cutSelection(Integer.parseInt(token[1].trim()), 
