@@ -237,7 +237,7 @@ public class CmdProcess {
 			}
 			// After Start has been found, copy lines into temp line list and remove lines
 			for(int i = startLine; i <= endLine; i++) {
-				if(tedList.getCurrent().getNext() != null) {
+				if(tedList.getCurrent() != null) {
 					temp.insertAfter(tedList.getCurrent().toString());
 					removeCurrentLine();
 				}
@@ -262,12 +262,25 @@ public class CmdProcess {
 		LineList temp = clipboard.getBoard(clipboardNum);
 		String mod;
 		temp.setCurrent(temp.getHead());
-		upOnePos();
-		while(temp.getCurrent() != null) {
+		if (tedList.getCurrent().getPrev() != null) {
+			upOnePos();
+			while(temp.getCurrent() != null) {
+				mod = temp.getCurrent().toString();
+				mod = mod.substring(0,mod.length()-2);
+				tedList.insertAfter(mod);
+				temp.setCurrent(temp.getCurrent().getNext());
+			}
+		} else {
 			mod = temp.getCurrent().toString();
 			mod = mod.substring(0,mod.length()-2);
-			tedList.insertAfter(mod);
+			tedList.insertBefore(mod);
 			temp.setCurrent(temp.getCurrent().getNext());
+			while(temp.getCurrent() != null) {
+				mod = temp.getCurrent().toString();
+				mod = mod.substring(0,mod.length()-2);
+				tedList.insertAfter(mod);
+				temp.setCurrent(temp.getCurrent().getNext());
+			}
 		}
 		downOnePos();
 		saved = false;
