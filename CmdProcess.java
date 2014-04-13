@@ -260,10 +260,13 @@ public class CmdProcess {
 	 */
 	public void pasteClipboard(int clipboardNum) {
 		LineList temp = clipboard.getBoard(clipboardNum);
+		String mod;
 		temp.setCurrent(temp.getHead());
 		upOnePos();
 		while(temp.getCurrent() != null) {
-			tedList.insertAfter(temp.getCurrent().toString());
+			mod = temp.getCurrent().toString();
+			mod = mod.substring(0,mod.length()-2);
+			tedList.insertAfter(mod);
 			temp.setCurrent(temp.getCurrent().getNext());
 		}
 		downOnePos();
