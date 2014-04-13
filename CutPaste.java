@@ -50,15 +50,15 @@ public class CutPaste {
 		if(head == null) {
 			insertAfter(newBoard);
 		}
-		else if(current.getClipNum() < newBoardNum) {
-			current = current.getNext();
-			add(newBoard, newBoardNum);
-		}
 		else if(current.getNext() == null) {
 			insertAfter(newBoard);
 		}
 		else if(current.getClipNum() > newBoardNum) {
 			insertBefore(newBoard);
+		}
+		else if(current.getClipNum() < newBoardNum) {
+			current = current.getNext();
+			add(newBoard, newBoardNum);
 		}
 	}
 
