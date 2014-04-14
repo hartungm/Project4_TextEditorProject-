@@ -14,7 +14,7 @@ public class EditorTest {
 		Editor e = new Editor();
 		e.processCommand("i Test 1");
 		e.processCommand("i Test 2");
-		assertEquals("    Test 1\n--> Test 2\n", e.getProcess().getList().toString());
+		assertEquals("    1: Test 1\n-->2: Test 2\n", e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -127,13 +127,16 @@ public class EditorTest {
 	}
 
 	@Test
-	public void testSave() {
-
-	}
-
-	@Test
-	public void testLoad() {
-
+	public void testSaveLoad() {
+		Editor e = new Editor();
+		e.processCommand("i Test 1");
+		e.processCommand("i Test 2");
+		e.processCommand("i Test 3");
+		e.processCommand("s file1");
+		Editor f = new Editor();
+		f.processCommand("l file1");
+		assertEquals(e.getProcess().getList().toString(),
+				f.getProcess().getList().toString());
 	}
 
 	@Test
