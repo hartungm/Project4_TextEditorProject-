@@ -14,7 +14,7 @@ public class EditorTest {
 		Editor e = new Editor();
 		e.processCommand("i Test 1");
 		e.processCommand("i Test 2");
-		assertEquals("    Test 1\n--> Test 2\n", e.process.tedList.toString());
+		assertEquals("    Test 1\n--> Test 2\n", e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -22,7 +22,7 @@ public class EditorTest {
 		Editor e = new Editor();
 		e.processCommand("b Test 1");
 		e.processCommand("b Test 2");
-		assertEquals("--> Test 2\n    Test 1\n", e.process.tedList.toString());
+		assertEquals("--> Test 2\n    Test 1\n", e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -31,7 +31,7 @@ public class EditorTest {
 		e.processCommand("b Test 1");
 		e.processCommand("b Test 2");
 		e.processCommand("e Test 3");
-		assertEquals("    Test 2\n    Test 1\n--> Test 3\n", e.process.tedList.toString());
+		assertEquals("    Test 2\n    Test 1\n--> Test 3\n", e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -83,7 +83,7 @@ public class EditorTest {
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
 		e.processCommand("r");
-		assertEquals("    Test 1\n--> Test 2", e.process.tedList.toString());
+		assertEquals("    Test 1\n--> Test 2", e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -93,7 +93,7 @@ public class EditorTest {
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
 		e.processCommand("r 2");
-		assertEquals("--> Test 1\n", e.process.tedList.toString());
+		assertEquals("--> Test 1\n", e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -103,7 +103,7 @@ public class EditorTest {
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
 		e.processCommand("d");
-		assertEquals("    Test 1\n    Test 2\n--> Test 3\n", e.process.tedList.toString());
+		assertEquals("    Test 1\n    Test 2\n--> Test 3\n", e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -113,7 +113,7 @@ public class EditorTest {
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
 		e.processCommand("d 2 3");
-		assertEquals("    Test 2\n--> Test 3\n", e.process.tedList.toString());
+		assertEquals("    Test 2\n--> Test 3\n", e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -123,7 +123,7 @@ public class EditorTest {
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
 		e.processCommand("c");
-		assertEquals("", e.process.tedList.toString());
+		assertEquals("", e.getProcess().getList().toString());
 	}
 
 	@Test

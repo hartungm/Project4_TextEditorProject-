@@ -155,4 +155,12 @@ public class Editor implements IEditor {
 	public boolean getActive() {
 		return active;
 	}
+	
+	/********************************************************************
+	 * Gets CmdProcess object (used here for JUnit testing
+	 * @return CmdProcess object
+	 */
+	public CmdProcess getProcess() {
+		return process;
+	}
 }
