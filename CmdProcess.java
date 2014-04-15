@@ -263,24 +263,23 @@ public class CmdProcess {
 		temp.setCurrent(temp.getHead());
 		if (tedList.getCurrent().getPrev() != null) {
 			upOnePos();
-			do {
+			while(temp.getCurrent() != null) {
 				mod = temp.getCurrent().toString();
 				mod = mod.substring(0,mod.length()-2);
 				tedList.insertAfter(mod);
 				temp.setCurrent(temp.getCurrent().getNext());
-			} while(temp.getCurrent() != null)
-		} 
-		else {
+			}
+		} else {
 			mod = temp.getCurrent().toString();
 			mod = mod.substring(0,mod.length()-2);
 			tedList.insertBefore(mod);
 			temp.setCurrent(temp.getCurrent().getNext());
-			do {
+			while(temp.getCurrent() != null) {
 				mod = temp.getCurrent().toString();
 				mod = mod.substring(0,mod.length()-2);
 				tedList.insertAfter(mod);
 				temp.setCurrent(temp.getCurrent().getNext());
-			} while(temp.getCurrent() != null)
+			}
 		}
 		downOnePos();
 		saved = false;
