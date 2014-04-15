@@ -122,7 +122,7 @@ public class EditorTest {
 		e.processCommand("i Test 1");
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
-		e.processCommand("c");
+		e.processCommand("!c");
 		assertEquals("", e.getProcess().getList().toString());
 	}
 
@@ -134,7 +134,8 @@ public class EditorTest {
 		e.processCommand("i Test 3");
 		e.processCommand("s file1");
 		Editor f = new Editor();
-		f.processCommand("l file1");
+		f.processCommand("!l file1");
+		f.processCommand("m 2");
 		assertEquals(e.getProcess().getList().toString(),
 				f.getProcess().getList().toString());
 	}
@@ -146,16 +147,26 @@ public class EditorTest {
 
 	@Test
 	public void testExit() {
-
+		Editor e = new Editor();
+		e.processCommand("!x");
+		assertFalse(e.getActive());
 	}
 
 	@Test
 	public void testCut() {
-
+		Editor e = new Editor();
+		e.processCommand("i Test 1");
+		e.processCommand("cut 1 1 1");
+		assertEquals("", e.getProcess().getList().toString());
 	}
 
 	@Test
 	public void testPaste() {
-
+		Editor e = new Editor();
+		e.processCommand("i Test 1");
+		String t1 = e.getProcess().getList().toString();
+		e.processCommand("cut 1 1 1");
+		e.processCommand("pas 1");
+		assertEquals(t1, e.getProcess().getList().toString());
 	}
 }
