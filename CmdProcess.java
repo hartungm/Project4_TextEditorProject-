@@ -268,7 +268,7 @@ public class CmdProcess {
 				mod = mod.substring(0,mod.length()-2);
 				tedList.insertAfter(mod);
 				temp.setCurrent(temp.getCurrent().getNext());
-			} while(temp.getCurrent() != null)
+			} while(temp.getCurrent() != null);
 		} 
 		else {
 			mod = temp.getCurrent().toString();
@@ -280,7 +280,7 @@ public class CmdProcess {
 				mod = mod.substring(0,mod.length()-2);
 				tedList.insertAfter(mod);
 				temp.setCurrent(temp.getCurrent().getNext());
-			} while(temp.getCurrent() != null)
+			} while(temp.getCurrent() != null);
 		}
 		downOnePos();
 		saved = false;
