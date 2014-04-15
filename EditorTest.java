@@ -3,10 +3,7 @@
 *	Unit Tests for Project 4 of Winter 2014 CIS 163
 *	@author Michael Hartung, Matthew Armand
 */
-import org.junit.*;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class EditorTest {
