@@ -9,7 +9,7 @@ public class CmdProcess {
 	private LineList tedList;
 	private boolean saved;
 	private CutPaste clipboard;
-	
+
 	/********************************************************************
 	 * Standard constructor, instantiates new process object
 	 */
@@ -18,7 +18,7 @@ public class CmdProcess {
 		clipboard = new CutPaste();
 		saved = false;
 	}
-	
+
 	/********************************************************************
 	 * Checks whether the file has been saved since last alteration
 	 * @return true if unchanged since last saved, false if altered
@@ -26,7 +26,7 @@ public class CmdProcess {
 	public boolean isSaved() {
 		return saved;
 	}
-	
+
 	/********************************************************************
 	 * Gets linelist object within Process class
 	 * @return LineList object (tedList)
@@ -34,7 +34,7 @@ public class CmdProcess {
 	public LineList getList () {
 		return tedList;
 	}
-	
+
 	/********************************************************************
 	 * Inserts a new line before the current line in the list
 	 * @param newLine String of text to comprise new line
@@ -90,7 +90,7 @@ public class CmdProcess {
 			numUp--;
 		}
 	}
-	
+
 	/********************************************************************
 	 * Moves the current line indicator up one position
 	 */
@@ -120,7 +120,7 @@ public class CmdProcess {
 	public void displayFile() {
 		System.out.println(tedList.toString());
 	}
-	
+
 	/********************************************************************
 	 * Displays lines x to y in the list in formatted order
 	 * @param x starting line to display
@@ -261,26 +261,34 @@ public class CmdProcess {
 		LineList temp = clipboard.getBoard(clipboardNum);
 		String mod;
 		temp.setCurrent(temp.getHead());
-		if (tedList.getCurrent().getPrev() != null) {
-			upOnePos();
-			do {
+		if(tedList.getHead() == null) {
+			while(temp.getCurrent() != null) {
 				mod = temp.getCurrent().toString();
 				mod = mod.substring(0,mod.length()-2);
 				tedList.insertAfter(mod);
 				temp.setCurrent(temp.getCurrent().getNext());
-			} while(temp.getCurrent() != null);
+			}
+		}
+		else if(tedList.getCurrent().getPrev() != null) {
+			upOnePos();
+			while(temp.getCurrent() != null) {
+				mod = temp.getCurrent().toString();
+				mod = mod.substring(0,mod.length()-2);
+				tedList.insertAfter(mod);
+				temp.setCurrent(temp.getCurrent().getNext());
+			}
 		} 
 		else {
 			mod = temp.getCurrent().toString();
 			mod = mod.substring(0,mod.length()-2);
 			tedList.insertBefore(mod);
 			temp.setCurrent(temp.getCurrent().getNext());
-			do {
+			while(temp.getCurrent() != null) {
 				mod = temp.getCurrent().toString();
 				mod = mod.substring(0,mod.length()-2);
 				tedList.insertAfter(mod);
 				temp.setCurrent(temp.getCurrent().getNext());
-			} while(temp.getCurrent() != null);
+			}
 		}
 		downOnePos();
 		saved = false;
