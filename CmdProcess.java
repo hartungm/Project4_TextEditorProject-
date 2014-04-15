@@ -261,7 +261,15 @@ public class CmdProcess {
 		LineList temp = clipboard.getBoard(clipboardNum);
 		String mod;
 		temp.setCurrent(temp.getHead());
-		if (tedList.getCurrent().getPrev() != null) {
+		if(tedlist.getHead() == null) {
+			while(temp.getCurrent() != null) {
+				mod = temp.getCurrent().toString();
+				mod = mod.substring(0,mod.length()-2);
+				tedList.insertAfter(mod);
+				temp.setCurrent(temp.getCurrent().getNext());
+			}
+		}
+		else if(tedList.getCurrent().getPrev() != null) {
 			upOnePos();
 			while(temp.getCurrent() != null) {
 				mod = temp.getCurrent().toString();
@@ -269,7 +277,8 @@ public class CmdProcess {
 				tedList.insertAfter(mod);
 				temp.setCurrent(temp.getCurrent().getNext());
 			}
-		} else {
+		} 
+		else {
 			mod = temp.getCurrent().toString();
 			mod = mod.substring(0,mod.length()-2);
 			tedList.insertBefore(mod);
