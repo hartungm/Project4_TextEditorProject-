@@ -92,7 +92,7 @@ public class Editor implements IEditor {
 			case "!l":	process.loadFile(token[1].trim());
 						break;
 			
-			case "h":	process.showHelp();
+			case "h":	System.out.println(process.showHelp());
 						break;
 			
 			case "x":	if (process.isSaved()) {

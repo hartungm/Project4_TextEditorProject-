@@ -186,8 +186,7 @@ public class CmdProcess {
 	/********************************************************************
 	 * Displays the help dialog with list of commands and functions
 	 */
-	public void showHelp() {
-		//non-implemented functionality included, commented out
+	public String showHelp() {
 		String out = "";
 		out += ("Welcome to Text Editor Help!\n");
 		out += ("Command:      Function:\n");
@@ -216,7 +215,7 @@ public class CmdProcess {
 		out += ("h             Display this help page\n");
 		out += ("x             Exit the editor\n");
 		out += ("!x            Force exit the editor");
-		System.out.println(out);
+		return out;
 	}
 
 	/********************************************************************

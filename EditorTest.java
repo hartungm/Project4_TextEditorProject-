@@ -4,7 +4,9 @@
 *	@author Michael Hartung, Matthew Armand
 */
 import org.junit.*;
+
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class EditorTest {
@@ -14,7 +16,8 @@ public class EditorTest {
 		Editor e = new Editor();
 		e.processCommand("i Test 1");
 		e.processCommand("i Test 2");
-		assertEquals("    1: Test 1\n-->2: Test 2\n", e.getProcess().getList().toString());
+		assertEquals("    1: Test 1\n--> 2: Test 2\n", 
+				e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -22,7 +25,8 @@ public class EditorTest {
 		Editor e = new Editor();
 		e.processCommand("b Test 1");
 		e.processCommand("b Test 2");
-		assertEquals("--> Test 2\n    Test 1\n", e.getProcess().getList().toString());
+		assertEquals("--> 1: Test 2\n    2: Test 1\n", 
+				e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -31,7 +35,8 @@ public class EditorTest {
 		e.processCommand("b Test 1");
 		e.processCommand("b Test 2");
 		e.processCommand("e Test 3");
-		assertEquals("    Test 2\n    Test 1\n--> Test 3\n", e.getProcess().getList().toString());
+		assertEquals("    1: Test 2\n    2: Test 1\n--> 3: Test 3\n", 
+				e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -83,7 +88,8 @@ public class EditorTest {
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
 		e.processCommand("r");
-		assertEquals("    Test 1\n--> Test 2", e.getProcess().getList().toString());
+		assertEquals("    1: Test 1\n--> 2: Test 2\n", 
+				e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -93,7 +99,8 @@ public class EditorTest {
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
 		e.processCommand("r 2");
-		assertEquals("--> Test 1\n", e.getProcess().getList().toString());
+		assertEquals("--> 1: Test 1\n", 
+				e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -103,7 +110,8 @@ public class EditorTest {
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
 		e.processCommand("d");
-		assertEquals("    Test 1\n    Test 2\n--> Test 3\n", e.getProcess().getList().toString());
+		assertEquals("    1: Test 1\n    2: Test 2\n--> 3: Test 3\n", 
+				e.getProcess().getList().toString());
 	}
 
 	@Test
@@ -112,8 +120,8 @@ public class EditorTest {
 		e.processCommand("i Test 1");
 		e.processCommand("i Test 2");
 		e.processCommand("i Test 3");
-		e.processCommand("d 2 3");
-		assertEquals("    Test 2\n--> Test 3\n", e.getProcess().getList().toString());
+		String t1 = e.getProcess().getList().display(2,3);
+		assertEquals("    2: Test 2\n--> 3: Test 3\n", t1);
 	}
 
 	@Test
@@ -141,11 +149,6 @@ public class EditorTest {
 	}
 
 	@Test
-	public void testHelp() {
-		
-	}
-
-	@Test
 	public void testExit() {
 		Editor e = new Editor();
 		e.processCommand("!x");
@@ -168,5 +171,40 @@ public class EditorTest {
 		e.processCommand("cut 1 1 1");
 		e.processCommand("pas 1");
 		assertEquals(t1, e.getProcess().getList().toString());
+	}
+	
+	@Test
+	public void testHelp() {
+		Editor e = new Editor();
+		String t1 = e.getProcess().showHelp();
+		String t2 = "";
+		t2 += ("Welcome to Text Editor Help!\n");
+		t2 += ("Command:      Function:\n");
+		t2 += ("b 'sentence'  Insert sentence before current");
+		t2 += (" line, make inserted line current\n");
+		t2 += ("i 'sentence'  Insert sentence after current");
+		t2 += (" line, make inserted line current\n");
+		t2 += ("e 'sentence'  Insert sentence after last line, make inserted line current\n");
+		t2 += ("m             Move cursor down 1 position\n");
+		t2 += ("m #           Move cursor down # positions\n");
+		t2 += ("u             Move cursor up 1 position\n");
+		t2 += ("u #           Move cursor down # positions\n");
+		t2 += ("r             Remove current line. Next line becomes ");
+		t2 += ("current, unless no next \n              line, then previous becomes ");
+		t2 += ("current\n");
+		t2 += ("r #           Remove # lines, starting at current\n");
+		t2 += ("d             Display all lines with line numbers\n");
+		t2 += ("d # *         Display lines # to * with line numbers\n");
+		t2 += ("cut # $ *     Cut lines # to $ to clipboard *\n");
+		t2 += ("pas *         Paste clipboard * before current position\n");
+		t2 += ("c             Clear all lines in the file\n");
+		t2 += ("!c            Force clear all lines in the file\n");
+		t2 += ("s 'filename'  Save contents to specified text file\n");
+		t2 += ("l 'filename'  Load contents of file into current buffer\n");
+		t2 += ("!l 'filename' Force load contents of file into current buffer\n");
+		t2 += ("h             Display this help page\n");
+		t2 += ("x             Exit the editor\n");
+		t2 += ("!x            Force exit the editor");
+		assertEquals(t1,t2);
 	}
 }
