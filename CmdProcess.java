@@ -290,7 +290,8 @@ public class CmdProcess {
 				temp.setCurrent(temp.getCurrent().getNext());
 			}
 		}
-		downOnePos();
+		if (tedList.getCurrent().getNext() != null)
+			downOnePos();
 		saved = false;
 	}
 }
